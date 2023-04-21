@@ -1,0 +1,14 @@
+#numA,
+#numB {
+  width: 36px;
+}
+
+.feedbackPulse {
+  animation: kfPulse 2800ms 1;
+}
+
+@keyframes kfPulse {
+  0% {
+    background-color: #c6ff00;
+  }
+}

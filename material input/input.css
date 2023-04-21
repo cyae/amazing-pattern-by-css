@@ -1,0 +1,15 @@
+.material {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  outline: 0;
+  background-size: 0 1px;
+  background-color: transparent;
+  background-image: linear-gradient(dodgerblue 0%, dodgerblue 100%);
+  background-repeat: no-repeat;
+  background-position: bottom -1px center;
+  transition: background-size 260ms ease-in-out;
+}
+
+.material:focus {
+  background-size: 100% 1px;
+}

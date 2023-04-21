@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web Frontend Animations (by Eric Fortis)</title>
+	<meta content="width=device-width" name="viewport">
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+	<style>
+		html, body {
+			padding: 0;
+			margin: 0;
+			background: #222;
+			color: #fff;
+			scroll-behavior: smooth;
+			font-family: Avenir Next, system-ui, sans-serif;
+			font-size: 16px;
+			text-align: center;
+		}
+		body {
+			margin: 40px;
+		}
+		* {
+			box-sizing: border-box
+		}
+		h2 {
+			margin-top: 7rem;
+		}
+		a {
+			color: #fff;
+		}
+		p {
+			max-width: 440px;
+			margin: 0 auto;
+			color: #aaa;
+		}
+
+		.Instructions {
+			margin-top: 30px;
+			color: white;
+		}
+		
+		.normalWeight {
+			font-weight: normal;
+		}
+
+		.UIDrafterLogoSpin,
+		.DebogContainer {
+			width: 380px;
+			max-width: 95%;
+		}
+
+		.SvgMorph {
+			width: 60px;
+			height: 60px;
+			border: 0;
+			border-radius: 4px;
+			background: none;
+			cursor: pointer;
+		}
+		.SvgMorph:hover {
+			background: rgba(0, 0, 0, 0.3);
+		}
+		.SvgMorph:active {
+			cursor: grabbing;
+		}
+		.SvgMorph:not(:last-of-type) {
+			margin-right: 12px;
+		}
+
+		#CalendarWrap {
+			width: calc(140px + 7px * 2);
+			cursor: pointer;
+		}
+
+		#Starfield {
+			width: 90%;
+			height: 240px;
+			background: linear-gradient(#171717, #333);
+		}
+
+		#InteractiveConnectionTarget {
+			width: 90%;
+			height: 240px;
+			border: 1px solid #666;
+			touch-action: none; /* Prevents scrolling on touch */
+		}
+		#InteractiveConnection {
+			fill: none;
+			stroke: #ff4000;
+			stroke-width: 2px;
+		}
+
+
+		footer {
+			padding: 20px 0;
+			margin-top: 11rem;
+			color: #999;
+		}
+	</style>
+	<link href="calendar.css" rel="stylesheet">
+	<link href="kitt-like-lights.css" rel="stylesheet">
+	<link href="3d-carousel.css" rel="stylesheet">
+</head>
+<body>
+<h1>Web Animations</h1>
+<p>
+	Open source plain JS, CSS, HTML, SVG animations for learning web frontend development.
+	Source code at <a href="https://github.com/ericfortis/web-animations">Github</a>
+</p>
+
+<p class="Instructions">Click the animations to replay them.</p>
+
+
+<h2 id="-3d-spin"></h2>
+<object class="UIDrafterLogoSpin" data="uidrafter-logo.svg" type="image/svg+xml"></object>
+
+
+<h2 id="-debog-logo"></h2>
+<!--	Here's an integration of this logo in https://uidrafter.com/report-issue -->
+<!--	This drawing is copyrighted (don't copy it), only the code is under ISC.-->
+<object class="DebogContainer" data="debog.svg" type="image/svg+xml"></object>
+
+
+<h2 id="-svg-morph">SVG Morph</h2>
+<p>
+	Play to Pause (polygon) and Car to Bus (path)
+</p>
+<button type="button" id="SvgMorphPlayToPause" class="SvgMorph"></button>
+<button type="button" id="SvgMorphCarToBus" class="SvgMorph"></button>
+
+
+<h2 id="-kitt-like-lights">KITT-like lights</h2>
+<div class="Kitt"></div>
+
+
+<h2 id="-marching-ants">Marching Ants</h2>
+<svg viewBox="0 0 240 52" width="240" xmlns="http://www.w3.org/2000/svg">
+	<rect fill="#555" height="50" width="50" x="1" y="1" />
+	<rect class="marchingAnts" fill="#ff4000" height="50" stroke="#ff4000" stroke-width="2" width="50" x="189" y="1" />
+	<path class="marchingAnts" d="M50,25 H190" fill="none" stroke="#ff4000" stroke-width="2" />
+</svg>
+
+
+<h2 id="-sun-svg-animateTransform">Sun (SVG animateTransform)</h2>
+<p>
+	Artwork by <a href="https://instagram.com/vincentdiaznegron" target="_blank">Vincent Diaz</a>.
+	<br>
+	See more of his <a target="_blank" href="https://ericfortis.com/portfolio/#-vincent">artwork animated</a>.
+</p>
+<img src="sun.svg" width="185" alt="Sun Animation by Vincent Diaz" />
+
+
+<h2 id="-calendar">Calendar <span class="normalWeight">(weeks faster)</span></h2>
+<div id="CalendarWrap"></div>
+
+
+<h2 id="-fortress">Fortress</h2>
+<object data="fortress.svg" type="image/svg+xml"></object>
+
+
+<h2 id="-searching">Searching</h2>
+<object data="search.svg" type="image/svg+xml"></object>
+
+
+<h2 id="-padlock">Padlock</h2>
+<object data="padlock.svg" type="image/svg+xml"></object>
+
+
+<h2 id="-starfield">Starfield</h2>
+<div id="Starfield"></div>
+
+
+<h2 id="-draw-interactive-connection">Draw Interactive Connection</h2>
+<svg id="InteractiveConnectionTarget">
+	<path d="" id="InteractiveConnection" />
+</svg>
+
+
+<h2 id="-fluid-3d-cube-carousel">Fluid 3D Cube Carousel</h2>
+<div class="vpRoot">
+	<div class="CubeScene">
+		<div class="Cube">
+			<div class="cfLeft" id="Demo1">
+				<img alt="Left" src="media/left.svg" />
+			</div>
+			<div class="cf cfFront" id="Demo2">
+				<img alt="Front" src="media/front.svg" />
+			</div>
+			<div class="cf cfRight" id="Demo3">
+				<img alt="Right`" src="media/right.svg" />
+			</div>
+			<div class="cf cfBack" id="Demo4">
+				<img alt="Back`" src="media/back.svg" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="CubeControls">
+	<label class="cubeRadioButton cubeSelected" data-cubeface="cfLeft" data-for="Demo1">
+		<input type="radio" name="demo-cube" checked />
+		<span class="icon"></span>
+		<span class="title">Left</span>
+	</label>
+
+	<label class="cubeRadioButton" data-cubeface="cfFront" data-for="Demo2">
+		<input type="radio" name="demo-cube" />
+		<span class="icon"></span>
+		<span class="title">Front</span>
+	</label>
+
+	<label class="cubeRadioButton" data-cubeface="cfRight" data-for="Demo3">
+		<input type="radio" name="demo-cube" />
+		<span class="icon"></span>
+		<span class="title">Right</span>
+	</label>
+
+	<label class="cubeRadioButton" data-cubeface="cfBack" data-for="Demo4">
+		<input type="radio" name="demo-cube" />
+		<span class="icon"></span>
+		<span class="title">Back</span>
+	</label>
+</div>
+
+
+<p>
+	Source code at <a href="https://github.com/ericfortis/web-animations">Github</a>
+</p>
+
+
+<h2>See also:</h2>
+<p>
+	<a href="https://ericfortis.github.io/web-tricks/" target="_blank">Web Tricks</a>
+</p>
+<p>
+	<a href="https://github.com/ericfortis/web-projects" target="_blank">Web Frontend Projects</a>
+</p>
+
+
+<footer>
+	<a target="_blank" aria-label="Twitter" href="//twitter.com/efortis">
+		<svg width="48" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+			<path fill="#3eabff" d="M45.7 10.5a17.8 17.8 0 01-5.1 1.4A9 9 0 0044.5 7a17.8 17.8 0 01-5.7 2.2 8.9 8.9 0 00-15.1 8A25.3 25.3 0 015.3 8a8.9 8.9 0 002.8 11.9 8.9 8.9 0 01-4-1.1 9 9 0 007 8.8 9 9 0 01-4 .2 9 9 0 008.4 6.2 17.9 17.9 0 01-13.2 3.7 25.2 25.2 0 0013.6 4 25.2 25.2 0 0025.4-25.4v-1.1a18.1 18.1 0 004.4-4.7z" />
+		</svg>
+	</a>
+	<br>
+	&copy; 2022 Eric Fortis
+</footer>
+
+<script src="svg-morph.js"></script>
+<script src="calendar.js"></script>
+<script src="kitt-like-lights.js"></script>
+<script src="marching-ants.js"></script>
+<script src="starfield.js"></script>
+<script src="draw-interactive-connection.js"></script>
+<script src="3d-carousel.js"></script>
+</body>
+</html>

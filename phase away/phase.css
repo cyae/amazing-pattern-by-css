@@ -1,0 +1,23 @@
+/* @BoltClock stackoverflow.com/a/27905094/529725 */
+
+/* Hover-out Transition */
+.itemA:hover {
+  background-color: purple;
+}
+.itemA:not(:hover) {
+  transition: all ease-in-out 1s;
+}
+
+/* Hover-in Transition */
+.itemB:hover {
+  background-color: purple;
+  transition: all ease-in-out 1s;
+}
+
+/* Hover-in-out Transition */
+.itemC {
+  transition: all ease-in-out 1s;
+}
+.itemC:hover {
+  background-color: purple;
+}
